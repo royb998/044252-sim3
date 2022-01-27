@@ -32,7 +32,7 @@
      input logic bsel,
      input logic [3:0] alusel,
      input logic mdrwrite,
-     input logic inv_en,
+     input logic neg_en,
      
      // Clock and reset
      input logic clk,
@@ -169,7 +169,7 @@
 
 // Inverts the input to the DMEM, for sw2 command.
 always_comb begin
-    if (inv_en == 1'b1) begin
+    if (neg_en == 1'b1) begin
         dmem_dataout = -b;
     end
     else begin

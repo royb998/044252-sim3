@@ -24,7 +24,7 @@
      output logic bsel,
      output logic [3:0] alusel,
      output logic mdrwrite,
-     output logic inv_en,
+     output logic neg_en,
      
      // Clock and reset
      input logic clk,
@@ -132,7 +132,7 @@ sm_type current,next;
     alusel = ALU_ADD;
     mdrwrite = 1'b0;
     memrw = 1'b0;
-    inv_en = 1'b0;
+    neg_en = 1'b0;
     case (current)
         FETCH:
         begin
@@ -163,7 +163,7 @@ sm_type current,next;
             memrw       = 1'b1;
         SW2_MEM: begin
             memrw       = 1'b1;
-            inv_en      = 1'b1;
+            neg_en      = 1'b1;
         end
         RTYPE_ALU: begin
             asel        = ALUA_REG;
