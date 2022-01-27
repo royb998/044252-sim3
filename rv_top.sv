@@ -41,6 +41,7 @@
  logic bsel;
  logic [3:0] alusel;
  logic mdrwrite;
+ logic inv_en;
      
  // Data path
  // =========
@@ -72,6 +73,7 @@
      .bsel(bsel),
      .alusel(alusel),
      .mdrwrite(mdrwrite),
+     .inv_en(inv_en),
      
      // Clock and reset
      .clk(clk),
@@ -100,6 +102,7 @@
      .bsel(bsel),
      .alusel(alusel),
      .mdrwrite(mdrwrite),
+     .inv_en(inv_en),
      
      // Clock and reset
      .clk(clk),

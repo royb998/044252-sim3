@@ -32,6 +32,7 @@
      input logic bsel,
      input logic [3:0] alusel,
      input logic mdrwrite,
+     input logic inv_en,
      
      // Clock and reset
      input logic clk,
@@ -162,11 +163,19 @@
      else
          aluout     <= alu_result;
 
-
  // Memory
  // ======
  assign dmem_addr = aluout;
- assign dmem_dataout = b;
+
+// Inverts the input to the DMEM, for sw2 command.
+always_comb begin
+    if (inv_en == 1'b1) begin
+        dmem_dataout = -b;
+    end
+    else begin
+        dmem_dataout = b;
+    end
+end
 
  always_ff @(posedge clk or posedge rst)
      if (rst)
